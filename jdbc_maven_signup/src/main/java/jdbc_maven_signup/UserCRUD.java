@@ -152,6 +152,7 @@ public class UserCRUD {
 		} else {
 			return false;
 		}
+		
 	}
 	
 	public void updatePassword(String password, String email)

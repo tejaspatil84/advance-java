@@ -90,7 +90,7 @@ public class UserMain {
 
 				} else {
 					System.out.println("Please check email and password");
-					System.out.println("Forgot password enter 1");
+					System.out.println("Forgot password enter 1 or else 2");
 					int forgot=scanner.nextInt();
 					if(forgot==1) {
 						System.out.println("Enter email");
@@ -105,7 +105,7 @@ public class UserMain {
 						}
 					}
 				}
-
+				
 			}
 				break;
 			case 3: {
