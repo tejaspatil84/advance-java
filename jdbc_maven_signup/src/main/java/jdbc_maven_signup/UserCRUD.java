@@ -122,29 +122,30 @@ public class UserCRUD {
 		}
 		connection.close();
 	}
-	
+
 	public void showAll(String email) throws ClassNotFoundException, IOException, SQLException {
-		Connection connection=getConnection();
-		PreparedStatement preparedStatement=connection.prepareStatement("SELECT FACEBOOKPASSWORD, WHATSAPPPASSWORD, SNAPCHATPASSWORD, TWITERPASSWORD FROM USER WHERE EMAIL=?");
+		Connection connection = getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement(
+				"SELECT FACEBOOKPASSWORD, WHATSAPPPASSWORD, SNAPCHATPASSWORD, TWITERPASSWORD FROM USER WHERE EMAIL=?");
 		preparedStatement.setString(1, email);
-		ResultSet resultSet=preparedStatement.executeQuery();
-		while(resultSet.next()) {
-			System.out.println("Facebook Password : "+resultSet.getString(1));
-			System.out.println("WhatsApp Password : "+resultSet.getString(2));
-			System.out.println("Snapchat Password : "+resultSet.getString(3));
-			System.out.println("Twiter Password : "+resultSet.getString(4));
+		ResultSet resultSet = preparedStatement.executeQuery();
+		while (resultSet.next()) {
+			System.out.println("Facebook Password : " + resultSet.getString(1));
+			System.out.println("WhatsApp Password : " + resultSet.getString(2));
+			System.out.println("Snapchat Password : " + resultSet.getString(3));
+			System.out.println("Twiter Password : " + resultSet.getString(4));
 			System.out.println("**************");
 		}
 	}
-	
+
 	public boolean forgotPassword(String femail) throws ClassNotFoundException, IOException, SQLException {
-		Connection connection=getConnection();
-		PreparedStatement preparedStatement=connection.prepareStatement("SELECT EMAIL FROM USER WHERE EMAIL=?");
+		Connection connection = getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement("SELECT EMAIL FROM USER WHERE EMAIL=?");
 		preparedStatement.setString(1, femail);
-		ResultSet resultSet=preparedStatement.executeQuery();
+		ResultSet resultSet = preparedStatement.executeQuery();
 		if (resultSet.next()) {
-			String dbemail=resultSet.getString(1);
-			if(dbemail.equals(femail)) {
+			String dbemail = resultSet.getString(1);
+			if (dbemail.equals(femail)) {
 				return true;
 			} else {
 				return false;
@@ -152,14 +153,12 @@ public class UserCRUD {
 		} else {
 			return false;
 		}
-		
+
 	}
-	
-	public void updatePassword(String password, String email)
-			throws ClassNotFoundException, IOException, SQLException {
+
+	public void updatePassword(String password, String email) throws ClassNotFoundException, IOException, SQLException {
 		Connection connection = getConnection();
-		PreparedStatement preparedStatement = connection
-				.prepareStatement("UPDATE USER SET PASSWORD=? WHERE EMAIL=?");
+		PreparedStatement preparedStatement = connection.prepareStatement("UPDATE USER SET PASSWORD=? WHERE EMAIL=?");
 		preparedStatement.setString(1, password);
 		preparedStatement.setString(2, email);
 		int count = preparedStatement.executeUpdate();
@@ -171,25 +170,3 @@ public class UserCRUD {
 		connection.close();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

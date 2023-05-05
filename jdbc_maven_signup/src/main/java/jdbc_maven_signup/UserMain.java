@@ -46,7 +46,7 @@ public class UserMain {
 				boolean result = crud.login(email, password);
 
 				if (result) {
-					System.out.println("Successfully LogIned...");
+					System.out.println("Logged In Successfully...");
 					boolean exit1 = true;
 					while (exit1) {
 						System.out.println(
@@ -91,12 +91,12 @@ public class UserMain {
 				} else {
 					System.out.println("Please check email and password");
 					System.out.println("Forgot password enter 1 or else 2");
-					int forgot=scanner.nextInt();
-					if(forgot==1) {
+					int forgot = scanner.nextInt();
+					if (forgot == 1) {
 						System.out.println("Enter email");
-						String femail=scanner.next();
-						boolean forgotResult=crud.forgotPassword(femail);
-						if(forgotResult==true) {
+						String femail = scanner.next();
+						boolean forgotResult = crud.forgotPassword(femail);
+						if (forgotResult == true) {
 							System.out.println("Enter New Password");
 							String newPassword = scanner.next();
 							crud.updatePassword(newPassword, femail);
@@ -105,7 +105,7 @@ public class UserMain {
 						}
 					}
 				}
-				
+
 			}
 				break;
 			case 3: {
